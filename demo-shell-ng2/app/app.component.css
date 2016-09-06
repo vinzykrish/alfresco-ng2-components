@@ -3,3 +3,17 @@
         display: none;
     }
 }
+
+.mdl-layout__header {
+    background-color: #137380;
+}
+
+.mdl-layout__drawer.is-visible{
+    background-color : #fff;
+    color : #000;
+}
+
+.mdl-menu__item{
+    background-color : #fff;
+    color: #000;
+}

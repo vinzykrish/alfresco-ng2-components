@@ -49,15 +49,17 @@
             <a class="mdl-navigation__link" href="" routerLink="/webscript" (click)="hideDrawer()">Webscript</a>
             <a class="mdl-navigation__link" href="" routerLink="/about" (click)="hideDrawer()">About</a>
         </nav>
-        <span class="mdl-layout-title">ECM host</span>
         <nav class="mdl-navigation">
-            <input type="text" class="mdl-textfield__input" id="ecmHost" data-automation-id="ecmHost"
-                   tabindex="1" (change)="onChangeECMHost($event)" value="{{ecmHost}}"/>
+            <label class="mdl-layout-title">ECM host
+                <input type="text" class="mdl-textfield__input" id="ecmHost" data-automation-id="ecmHost"
+                       tabindex="1" (change)="onChangeECMHost($event)" value="{{ecmHost}}"/>
+            </label>
         </nav>
-        <span class="mdl-layout-title">BPM host</span>
         <nav class="mdl-navigation">
-            <input type="text" class="mdl-textfield__input" id="bpmHost" data-automation-id="bpmHost"
-                   tabindex="1" (change)="onChangeBPMHost($event)" value="{{bpmHost}}"/>
+            <label class="mdl-layout-title">BPM host
+                <input type="text" class="mdl-textfield__input" id="bpmHost" data-automation-id="bpmHost"
+                       tabindex="1" (change)="onChangeBPMHost($event)" value="{{bpmHost}}"/>
+            </label>
         </nav>
     </div>
     <main class="mdl-layout__content">

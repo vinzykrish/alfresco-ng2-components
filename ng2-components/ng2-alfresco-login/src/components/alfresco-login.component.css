@@ -63,7 +63,11 @@
 }
 
 :host .mdl-button--raised.mdl-button--colored {
-    color: rgb(255, 255, 255);
+    color: #000;
+}
+
+:host .mdl-button--colored {
+    color : #696969;
 }
 
 :host .login-card-wide > .mdl-card__menu {
@@ -77,7 +81,7 @@
 :host .mdl-card__link a {
     opacity: 0.87;
     font-size: 14px;
-    color: #ff9100;
+    color: #ba5b01;
 }
 
 :host .login-action {
@@ -185,4 +189,13 @@
     position: absolute;
     right: 0;
     bottom: 20px;
+}
+
+.mdl-textfield__label {
+    color: #a26400;
+}
+
+.mdl-button__ripple-container{
+    color : #656565;
+    background-color: grey;
 }
