@@ -16,6 +16,7 @@
  */
 
 import { Component, Input } from '@angular/core';
+import { AlfrescoAuthenticationService, RenditionsService } from 'ng2-alfresco-core';
 
 @Component({
     moduleId: module.id,
@@ -31,10 +32,46 @@ export class NotSupportedFormat {
     @Input()
     urlFile: string;
 
+    @Input()
+    nodeId: string;
+
+    isPdfAvailable: boolean = false;
+
+    constructor(private authService: AlfrescoAuthenticationService, private renditionsService: RenditionsService) {
+    }
+
     /**
      * Download file opening it in a new window
      */
     download() {
         window.open(this.urlFile);
+    }
+
+    ngOnChanges() {
+        if (this.nodeId) {
+            this.handlePdfConversion();
+        }
+    }
+
+    handlePdfConversion() {
+        this.renditionsService.isRenditionAvailable(this.nodeId, 'pdf').subscribe((conversionPresent) => {
+            this.isPdfAvailable = true;
+            if (conversionPresent) {
+                this.renditionsService.getRendition(this.nodeId, 'pdf').subscribe((rendition) => {
+                    console.log(rendition);
+                }, () => {
+                    this.isPdfAvailable = false;
+                });
+            } else {
+                this.renditionsService.createRendition(this.nodeId, 'pdf').subscribe((rendition) => {
+                    console.log(rendition);
+                }, () => {
+                    this.isPdfAvailable = false;
+                });
+            }
+        }, (error) => {
+            this.isPdfAvailable = false;
+            console.error(error);
+        });
     }
 }

@@ -61,8 +61,7 @@
                                           [nameFile]="displayName"></media-player>
                         </div>
                         <div *ngIf="!supportedExtension()">
-                            <not-supported-format [urlFile]="urlFileContent"
-                                                  [nameFile]="displayName"></not-supported-format>
+                            <not-supported-format [urlFile]="urlFileContent" [nameFile]="displayName" [nodeId]="fileNodeId"></not-supported-format>
                         </div>
                         <!-- End View Switch -->
 
