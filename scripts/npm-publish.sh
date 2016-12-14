@@ -25,6 +25,6 @@ do
   echo "====== PUBLISHING: ${DESTDIR} ====="
   cd ${DESTDIR}
   npm install
-  npm publish
+  npm --loglevel silly publish.
   cd ${DIR}
 done
