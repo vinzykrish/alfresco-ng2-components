@@ -149,7 +149,7 @@ export class ActivitiForm implements OnInit, AfterViewChecked, OnChanges {
     debugMode: boolean = false;
 
     constructor(protected formService: FormService,
-                private visibilityService: WidgetVisibilityService,
+                public visibilityService: WidgetVisibilityService,
                 private ecmModelService: EcmModelService,
                 private nodeService: NodeService) {
     }
@@ -311,6 +311,7 @@ export class ActivitiForm implements OnInit, AfterViewChecked, OnChanges {
             .subscribe(
                 form => {
                     this.form = new FormModel(form, data, this.readOnly);
+                    // this.visibilityService.refreshVisibility(this.form);
                     this.formLoaded.emit(this.form);
                 },
                 (error) => {
@@ -417,7 +418,7 @@ export class ActivitiForm implements OnInit, AfterViewChecked, OnChanges {
 
     checkVisibility(field: FormFieldModel) {
         if (field && field.form) {
-            this.visibilityService.refreshVisibility(field.form);
+            // this.visibilityService.refreshVisibility(field.form);
         }
     }
 

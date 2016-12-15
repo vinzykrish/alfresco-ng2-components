@@ -78,7 +78,7 @@ export class ActivitiStartForm extends ActivitiForm implements OnInit, AfterView
     ngOnInit() {
         if (this.processId) {
             this.loadStartForm(this.processId);
-        }else {
+        } else {
             this.loadForm();
         }
 
@@ -95,7 +95,7 @@ export class ActivitiStartForm extends ActivitiForm implements OnInit, AfterView
         }
 
         let processId = changes['processId'];
-        if (processId  && processId.currentValue) {
+        if (processId && processId.currentValue) {
             this.loadStartForm(processId.currentValue);
             return;
         }
@@ -116,7 +116,9 @@ export class ActivitiStartForm extends ActivitiForm implements OnInit, AfterView
                     this.formName = form.name;
                     form.processDefinitionId = this.processDefinitionId;
                     this.form = this.parseForm(form);
-                    // this.form.processDefinitionId = this.processDefinitionId;
+                    if (this.form && this.form.fields) {
+                        // this.visibilityService.refreshVisibility(form);
+                    }
                     this.formLoaded.emit(this.form);
                 },
                 (error) => {
@@ -132,7 +134,10 @@ export class ActivitiStartForm extends ActivitiForm implements OnInit, AfterView
                 form => {
                     this.formName = form.processDefinitionName;
                     this.form = this.parseForm(form);
-                    this.formLoaded.emit(this.form);
+                    if (this.form && this.form.fields) {
+                        // this.visibilityService.refreshVisibility(this.form);
+                    }
+                    this.formLoaded.emit(form);
                 },
                 (error) => {
                     this.handleError(error);
